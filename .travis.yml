@@ -1,4 +1,4 @@
 arch: s390x
 services:
     - docker
-script: docker login quay.io $ROBOTUSER -p $ROBOTTOKEN && docker build -f 1.14/alpine3.11/Dockerfile --tag quay.io/ibmz/golang:1.14 && docker push quay.io/ibmz/golang:1.14
+script: docker login quay.io $ROBOTUSER -p $ROBOTTOKEN && docker build -f 1.14/alpine3.12/Dockerfile --tag quay.io/ibmz/golang:1.14 && docker push quay.io/ibmz/golang:1.14
