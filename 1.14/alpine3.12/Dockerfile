@@ -20,6 +20,7 @@ ENV GOLANG_VERSION 1.14.10
 
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
+	        git \
 		bash \
 		gcc \
 		gnupg \
