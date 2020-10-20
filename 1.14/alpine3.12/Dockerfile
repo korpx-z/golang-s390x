@@ -20,7 +20,6 @@ ENV GOLANG_VERSION 1.14.10
 
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
-	        git \
 		bash \
 		gcc \
 		gnupg \
@@ -94,6 +93,7 @@ RUN set -eux; \
 	\
 	go version
 
+RUN apk add git
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
