@@ -7,6 +7,7 @@
 FROM quay.io/ibmz/alpine:3.12
 
 RUN apk add --no-cache \
+                git \
 		ca-certificates
 
 # set up nsswitch.conf for Go's "netgo" implementation
@@ -23,7 +24,6 @@ RUN set -eux; \
 		bash \
 		gcc \
 		gnupg \
-		git \
 		go \
 		musl-dev \
 		openssl \
