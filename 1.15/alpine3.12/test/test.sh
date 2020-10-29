@@ -12,4 +12,3 @@ docker run -i --rm --name some-golang local/golang:1.15 helloworld
 docker rmi local/golang:1.15
 
 echo -e "\n $ANSI_GREEN *** TEST COMPLETED SUCESSFULLY *** $ANSI_RESET \n"
-
