@@ -23,6 +23,7 @@ RUN set -eux; \
 		bash \
 		gcc \
 		gnupg \
+		git \
 		go \
 		musl-dev \
 		openssl \
@@ -93,7 +94,6 @@ RUN set -eux; \
 	\
 	go version
 
-RUN apk add git
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
