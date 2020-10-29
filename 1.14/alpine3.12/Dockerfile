@@ -7,8 +7,8 @@
 FROM quay.io/ibmz/alpine:3.12
 
 RUN apk add --no-cache \
-		ca-certificates \
-		git
+                git \
+		ca-certificates 
 
 # set up nsswitch.conf for Go's "netgo" implementation
 # - https://github.com/golang/go/blob/go1.9.1/src/net/conf.go#L194-L275
