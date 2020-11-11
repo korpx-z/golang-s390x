@@ -1,26 +1,87 @@
-# https://github.com/docker-library/golang
+-	[`1.14`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.14)](https://travis-ci.com/github/korpx-z/golang)
+-	[`1.15`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.15)](https://travis-ci.com/github/korpx-z/golang)
 
-## Maintained by: [the Docker Community](https://github.com/docker-library/golang)
+# What is Go?
 
-This is the Git repo of the [Docker "Official Image"](https://github.com/docker-library/official-images#what-are-official-images) for [`golang`](https://hub.docker.com/_/golang/) (not to be confused with any official `golang` image provided by `golang` upstream). See [the Docker Hub page](https://hub.docker.com/_/golang/) for the full readme on how to use this Docker image and for information regarding contributing and issues.
+Go (a.k.a., Golang) is a programming language first developed at Google. It is a statically-typed language with syntax loosely derived from C, but with additional features such as garbage collection, type safety, some dynamic-typing capabilities, additional built-in types (e.g., variable-length arrays and key-value maps), and a large standard library.
 
-The [full image description on Docker Hub](https://hub.docker.com/_/golang/) is generated/maintained over in [the docker-library/docs repository](https://github.com/docker-library/docs), specifically in [the `golang` directory](https://github.com/docker-library/docs/tree/master/golang).
+> [wikipedia.org/wiki/Go_(programming_language)](http://en.wikipedia.org/wiki/Go_%28programming_language%29)
 
-## See a change merged here that doesn't show up on Docker Hub yet?
+![logo](https://raw.githubusercontent.com/docker-library/docs/01c12653951b2fe592c1f93a13b4e289ada0e3a1/golang/logo.png)
 
-For more information about the full official images change lifecycle, see [the "An image's source changed in Git, now what?" FAQ entry](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+# How to use this image
 
-For outstanding `golang` image PRs, check [PRs with the "library/golang" label on the official-images repository](https://github.com/docker-library/official-images/labels/library%2Fgolang). For the current "source of truth" for [`golang`](https://hub.docker.com/_/golang/), see [the `library/golang` file in the official-images repository](https://github.com/docker-library/official-images/blob/master/library/golang).
+**Note:** `/go` is world-writable to allow flexibility in the user which runs the container (for example, in a container started with `--user 1000:1000`, running `go get github.com/example/...` will succeed). While the `777` directory would be insecure on a regular host setup, there are not typically other processes or users inside the container, so this is equivilant to `700` for Docker usage, but allowing for `--user` flexibility.
 
----
+## Start a Go instance in your app
 
--	[![build status badge](https://img.shields.io/github/workflow/status/docker-library/golang/GitHub%20CI/master?label=GitHub%20CI)](https://github.com/docker-library/golang/actions?query=workflow%3A%22GitHub+CI%22+branch%3Amaster)
--	[![build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/update.sh/job/golang.svg?label=Automated%20update.sh)](https://doi-janky.infosiftr.net/job/update.sh/job/golang/)
+The most straightforward way to use this image is to use a Go container as both the build and runtime environment. In your `Dockerfile`, writing something along the lines of the following will compile and run your project:
 
-| Build | Status | Badges | (per-arch) |
-|:-:|:-:|:-:|:-:|
-| [![amd64 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/golang.svg?label=amd64)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/golang/) | [![arm32v5 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/golang.svg?label=arm32v5)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/golang/) | [![arm32v6 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/golang.svg?label=arm32v6)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/golang/) | [![arm32v7 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/golang.svg?label=arm32v7)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/golang/) |
-| [![arm64v8 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/golang.svg?label=arm64v8)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/golang/) | [![i386 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/golang.svg?label=i386)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/golang/) | [![mips64le build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/golang.svg?label=mips64le)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/golang/) | [![ppc64le build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/golang.svg?label=ppc64le)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/golang/) |
-| [![s390x build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/golang.svg?label=s390x)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/golang/) | [![windows-amd64 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/golang.svg?label=windows-amd64)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/golang/) | [![put-shared build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/put-shared/job/light/job/golang.svg?label=put-shared)](https://doi-janky.infosiftr.net/job/put-shared/job/light/job/golang/) |
+```dockerfile
+FROM quay.io/ibmz/golang:1.14
 
-<!-- THIS FILE IS GENERATED BY https://github.com/docker-library/docs/blob/master/generate-repo-stub-readme.sh -->
+WORKDIR /go/src/app
+COPY . .
+
+RUN go get -d -v ./...
+RUN go install -v ./...
+
+CMD ["app"]
+```
+
+You can then build and run the Docker image:
+
+```console
+$ docker build -t my-golang-app .
+$ docker run -it --rm --name my-running-app my-golang-app
+```
+
+## Compile your app inside the Docker container
+
+There may be occasions where it is not appropriate to run your app inside a container. To compile, but not run your app inside the Docker instance, you can write something like:
+
+**NOTE**
+You are currently unable to perform bind mounts on ZCX. Instead, please use Docker Volumes as illustrated below.
+
+```console
+$ docker create volume <your_volume>
+```
+```console
+$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz/golang:1.14 go build -v
+```
+
+This will add your current directory as a volume to the container, set the working directory to the volume, and run the command `go build` which will tell go to compile the project in the working directory and output the executable to `myapp`. Alternatively, if you have a `Makefile`, you can run the `make` command inside your container.
+
+```console
+$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz/golang:1.14 make
+```
+
+## Cross-compile your app inside the Docker container
+
+If you need to compile your application for a platform other than `s390x` (such as `windows/386`):
+
+```console
+$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 quay.io/ibmz/golang:1.14 go build -v
+```
+
+Alternatively, you can build for multiple platforms at once:
+
+```console
+$ docker run --rm -it -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz/golang:1.14 bash
+$ for GOOS in darwin linux; do
+>   for GOARCH in 386 amd64; do
+>     export GOOS GOARCH
+>     go build -v -o myapp-$GOOS-$GOARCH
+>   done
+> done
+```
+
+# License
+
+View [license information](http://golang.org/LICENSE) for the software contained in this image.
+
+As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
+
+Some additional license information which was able to be auto-detected might be found in [the `repo-info` repository's `golang/` directory](https://github.com/docker-library/repo-info/tree/master/repos/golang).
+
+As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
