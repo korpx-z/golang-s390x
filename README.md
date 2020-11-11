@@ -1,3 +1,5 @@
+*1.14 and 1.15 are both built from their respected branches!*
+
 -	[`1.14`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.14)](https://travis-ci.com/github/korpx-z/golang)
 -	[`1.15`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.15)](https://travis-ci.com/github/korpx-z/golang)
 
