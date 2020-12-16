@@ -1,9 +1,13 @@
 *1.14 and 1.15 are both built from their respected branches!*
 
--	[`1.14`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.14)](https://travis-ci.com/github/korpx-z/golang)
--	[`1.15`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.15)](https://travis-ci.com/github/korpx-z/golang)
+### This image is built to run on s390x architecture.
+-    [build source](https://github.com/korpx-z/golang) 
+-    [original source code](https://github.com/docker-library/golang)
 
-# What is Go?
+### Versions
+1.14, 1.15
+
+# Golang
 
 Go (a.k.a., Golang) is a programming language first developed at Google. It is a statically-typed language with syntax loosely derived from C, but with additional features such as garbage collection, type safety, some dynamic-typing capabilities, additional built-in types (e.g., variable-length arrays and key-value maps), and a large standard library.
 
@@ -20,7 +24,7 @@ Go (a.k.a., Golang) is a programming language first developed at Google. It is a
 The most straightforward way to use this image is to use a Go container as both the build and runtime environment. In your `Dockerfile`, writing something along the lines of the following will compile and run your project:
 
 ```dockerfile
-FROM quay.io/ibmz/golang:1.14
+FROM quay.io/ibm/golang:1.14
 
 WORKDIR /go/src/app
 COPY . .
@@ -49,13 +53,13 @@ You are currently unable to perform bind mounts on ZCX. Instead, please use Dock
 $ docker create volume <your_volume>
 ```
 ```console
-$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz/golang:1.14 go build -v
+$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibm/golang:1.14 go build -v
 ```
 
 This will add your current directory as a volume to the container, set the working directory to the volume, and run the command `go build` which will tell go to compile the project in the working directory and output the executable to `myapp`. Alternatively, if you have a `Makefile`, you can run the `make` command inside your container.
 
 ```console
-$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz/golang:1.14 make
+$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibm/golang:1.14 make
 ```
 
 ## Cross-compile your app inside the Docker container
@@ -63,13 +67,13 @@ $ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz
 If you need to compile your application for a platform other than `s390x` (such as `windows/386`):
 
 ```console
-$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 quay.io/ibmz/golang:1.14 go build -v
+$ docker run --rm -v <your_volume>:/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 quay.io/ibm/golang:1.14 go build -v
 ```
 
 Alternatively, you can build for multiple platforms at once:
 
 ```console
-$ docker run --rm -it -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibmz/golang:1.14 bash
+$ docker run --rm -it -v <your_volume>:/usr/src/myapp -w /usr/src/myapp quay.io/ibm/golang:1.14 bash
 $ for GOOS in darwin linux; do
 >   for GOARCH in 386 amd64; do
 >     export GOOS GOARCH
