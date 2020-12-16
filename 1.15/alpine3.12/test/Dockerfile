@@ -1,4 +1,4 @@
-FROM quay.io/ibmz/golang:1.15
+FROM quay.io/ibm/golang:1.15
 
 RUN go get github.com/go-training/helloworld
 
