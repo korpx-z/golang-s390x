@@ -6,7 +6,7 @@ env:
     - TEST_DIR="$PWD/1.14/alpine3.12/test/"
     - TEST_SCRIPT="test.sh"
     - BUILD_DIR="$PWD/1.14/alpine3.12"
-    - REPO="quay.io/ibmz/golang"
+    - REPO="quay.io/ibm/golang"
     - TAG="$REPO:1.14"
 before_script: 
   - cd $BUILD_DIR && chmod +x *
