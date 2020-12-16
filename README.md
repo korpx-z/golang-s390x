@@ -1,7 +1,11 @@
--	[`1.14`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.14)](https://travis-ci.com/github/korpx-z/golang)
--	[`1.15`](https://github.com/korpx-z/golang) - [![Build Status](https://travis-ci.com/korpx-z/golang.svg?branch=1.15)](https://travis-ci.com/github/korpx-z/golang)
+### This image is built to run on s390x architecture.
+-    [build source](https://github.com/korpx-z/golang) 
+-    [original source code](https://github.com/docker-library/golang)
 
-# What is Go?
+### Versions
+1.14, 1.15
+
+# Golang
 
 Go (a.k.a., Golang) is a programming language first developed at Google. It is a statically-typed language with syntax loosely derived from C, but with additional features such as garbage collection, type safety, some dynamic-typing capabilities, additional built-in types (e.g., variable-length arrays and key-value maps), and a large standard library.
 
