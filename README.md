@@ -1,4 +1,4 @@
-*1.14 and 1.15 are both built from their respected branches!*
+*__1.14 and 1.15 are both built from their respected branches__*
 
 ### This image is built to run on s390x architecture.
 -    [build source](https://github.com/korpx-z/golang-s390x) 
