@@ -1,7 +1,7 @@
 *1.14 and 1.15 are both built from their respected branches!*
 
 ### This image is built to run on s390x architecture.
--    [build source](https://github.com/korpx-z/golang) 
+-    [build source](https://github.com/korpx-z/golang-s390x) 
 -    [original source code](https://github.com/docker-library/golang)
 
 ### Versions
